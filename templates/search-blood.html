@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboad - Search Donor</title>
+    <link rel="stylesheet" href="../static/assest/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assest/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="shortcut icon" href="../static/img/logo.jpg" />
+</head>
+<body>
+    <main>
+        <header>
+            <div class="header-content">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user-plus"></i> Donor
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#form"><i class="fa fa-plus-circle"></i> Add New</button></li>
+                        <li><a href="/all-donor" class="dropdown-item" type="button"><i class="fa fa-list"></i> All Donor Details</a></li>
+                        <li><a href="/" class="dropdown-item" type="button"><i class="fa fa-arrow-left"></i> Return</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-search"></i> Search Blood Donor
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="/search-address" class="dropdown-item" type="button"><i class="fa fa-location text-danger"></i> Location</a></li>
+                        <li><a href="/search-blood" class="dropdown-item" type="button"><i class="fa fa-fire text-danger"></i> Blood Group</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-chart-line"></i> Stock
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="/stock-increase" class="dropdown-item" type="button"><i class="fa fa-arrow-up text-success"></i> Increase</a></li>
+                        <li><a href="/stock-decrease" class="dropdown-item" type="button"><i class="fa fa-arrow-down text-danger"></i> Decrease</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-chart-line text-success"></i> Stock Rates
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="/search-blood-rate-month" class="dropdown-item" type="button"><i class="fa fa-chart-line text-success"></i> Monthly Rate</a></li>
+                        <li><a href="/search-blood-rate-year" class="dropdown-item" type="button"><i class="fa fa-chart-line text-success"></i> Yearly Rate</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user-circle"></i> Users
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="/user-add" class="dropdown-item" type="button"><i class="fa fa-user-plus text-success"></i> Add User</a></li>
+                        <li><a href="/user-view" class="dropdown-item" type="button"><i class="fa fa-users text-success"></i> View Users</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="/birthday" class="btn btn-success">
+                        <i class="fa fa-gift"></i> Need Wishes
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a href="/regular-donor" class="btn btn-info">
+                        Regular Donor
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a href="/due-date" class="btn btn-light">
+                        <i class="fa fa-clock"></i> Dues
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a href="/logout" class="btn btn-danger">
+                        <i class="fa fa-power-off"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </header>
+        <style>
+            .search{
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+            }
+            .search form{
+                width: 30%;
+            }
+            .search input{
+                width: 100%;
+            }
+            .search span{
+                font-size: 30px;
+                font-weight: 900;
+                font-style: italic;
+            }
+        </style>
+        <h3><i id="text"></i></h3>
+        <section class="body-section">
+            <div class="modal-body">
+                <h2 class="text-light">Search donor with Blood Group</h2>
+                <div class="search">
+                    <span class="text-bold"><i class="fa fa-fire"></i> Blood Group</span>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <input type="search" name="search" class="form-control" placeholder="Search....">
+                        <button class="btn btn-success">search</button>
+                    </form>
+                </div>
+
+                <table class="table caption-top">
+                    <caption class="text-light">Result</caption>
+                    <thead class="bg-danger text-light">
+                    <tr>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Father Name</th>
+                        <th scope="col">Mother Name</th>
+                        <th scope="col">Date of Birth</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Blood Group</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Home Address</th>
+                        <th scope="col">Donate Times</th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-light">
+                        {% for donor in donor_search_list %}
+                        {% if donor %}
+                        <tr>
+                            <td>{{donor.full_name}}</td>
+                            <td>{{donor.father_name}}</td>
+                            <td>{{donor.mother_name}}</td>
+                            <td>{{donor.dob}}</td>
+                            <td>{{donor.pnumber}}</td>
+                            <td>{{donor.gender}}</td>
+                            <td>{{donor.email}}</td>
+                            <td>{{donor.blood_group}}</td>
+                            <td>{{donor.city}}</td>
+                            <td>{{donor.home_address}}</td>
+                            <td>{{donor.count}}</td>
+                            <td class="text-center">
+                                <a href="/try-updating-donor/{{donor.id}}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                <a href="/try-sending-email/{{donor.id}}" class="btn btn-success"><i class="fa fa-envelope"></i></a>
+                                <a href="/donor-details/{{donor.id}}" class="btn btn-info"><i class="fa fa-print"></i></a>
+                                <a href="/reset/{{donor.id}}" class="btn btn-secondary"><i class="fa fa-refresh"></i></a>
+                                <a href="/donate/{{donor.id}}" class="btn btn-warning"><i class="fa fa-fire"></i></a>
+                                <a href="/request-for-delete-donor/{{donor.id}}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td>No Record Found!!!</td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Add Donor</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="form-input">
+                        <div class="input-row">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" name="full-name" id="" required>
+                        </div>
+                        <div class="input-row">
+                            <label for="fathername">Father Name</label>
+                            <input type="text" name="father-name" id="" required>
+                        </div>
+                        <div class="input-row">
+                            <label for="mothername">Mother Name</label>
+                            <input type="text" name="mother-name" id="" required>
+                        </div>
+                        <div class="input-row">
+                            <label for="date of birth">Date of Birth</label>
+                            <input type="date" name="dob" id="" required>
+                        </div>
+                        <div class="input-row">
+                            <label for="mobile no">Mobile No.</label>
+                            <input type="text" name="pnumber" id="" required>
+                        </div>
+                        <div class="input-row">
+                            <label for="gender">Gender</label>
+                            <select name="gender" id="" required>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- second input -->
+                    <div class="form-input">
+                        <div class="input-row">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="" required>
+                        </div>
+                        <div class="input-row">
+                            <label for="blood group">Blood Group</label>
+                            <select name="blood-group" id="" required>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="input-row">
+                            <label for="City">City</label>
+                            <select name="city" id="" required>
+                                <option value="Katsina">Katsina</option>
+                                <option value="Kano">Kano</option>
+                                <option value="Zaria">Zaria</option>
+                                <option value="Kaduna">Kaduna</option>
+                                <option value="Abuja">Abuja</option>
+                                <option value="Lagos">Lagos</option>
+                            </select>
+                        </div>
+                        <label for="complete address">Complete Address</label>
+                        <div class="input-row">
+                            <textarea name="address" id="" cols="30" rows="6" required></textarea>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-save"></i>  Save</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i>  Cancel</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"> <i class="fa fa-power-off"></i>  Exit</button>
+                    </div>
+                </form>
+            </div>  
+          </div>
+        </div>
+  <script src="../static/assest/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/assest/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+  <script>
+    setInterval(function() {
+      function rand(){
+        var words = [
+            'GIVE BLOOD', 
+            'GIVE PLASMA',
+            'SHARE LIFE',
+            'SHARE OFTEN',
+        ]
+        var ran = Math.floor(Math.random()* words.length)
+        document.getElementById('text').innerHTML = words[ran];
+      }
+      rand()
+    }, 2000);
+  </script>
+</body>
+</html>

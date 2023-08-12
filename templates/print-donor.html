@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from www.urbanui.com/melody/template/pages/samples/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Sep 2018 06:08:53 GMT -->
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Donor - Form Print</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="../static/assets2/vendors/iconfonts/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="../static/assets2/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../static/assets2/vendors/css/vendor.bundle.addons.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="../static/assets2/css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="../static/img/logo.jpg" />
+  <style>
+    .brand-logo{
+        display: flex;
+        justify-content: space-between;
+    }
+    .photo{
+        border: 2px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth">
+        <div class="row w-100">
+          <div class="col-lg-10 mx-auto">
+            <div class="auth-form-light text-left p-5">
+              <div class="brand-logo">
+                <img src="../static/img/logo.jpg" alt="logo">
+                <div class="text-center">
+                    <h2>Blood Banking Management System</h2>
+                    <h4 style="font-weight: 100;">Donor Details</h4>
+                </div>
+                <img src="../static/img/logo.jpg" alt="logo">
+              </div>
+              <h5>DONOR INFOMATION</h5> <br>
+              <span><strong>Full Name:</strong> &nbsp;&nbsp;&nbsp;&nbsp; {{donor.full_name}}</span><br><br>
+              <span><strong>Father Name:</strong> &nbsp;&nbsp;&nbsp;&nbsp; {{donor.father_name}}       </span><br><br>
+              <span><strong>Mother Name:</strong> &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.mother_name}}           </span><br><br>
+              <span><strong>Date of Birth:</strong> &nbsp;&nbsp;&nbsp;&nbsp;  {{donor.dob}}</span><br><br>
+              <span><strong>Phone Number: </strong> &nbsp;&nbsp;&nbsp;&nbsp;  {{donor.pnumber}}           </span><br><br>
+              <span><strong>Gender:</strong> &nbsp;&nbsp;&nbsp;&nbsp; {{donor.gender}}         </span><br><br>
+              <span><strong>Email:</strong> &nbsp;&nbsp;&nbsp;&nbsp;  {{donor.email}}             </span><br><br>
+              <span><strong>Blood Group: </strong>   &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.blood_group}}             </span><br><br>
+              <span><strong>City:</strong>  &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.city}}       </span><br><br>
+              <span><strong>Home Address:</strong>      &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.home_address}}          </span><br><br>
+              <span><strong>Nationality:</strong>      &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.nationality}}          </span><br><br>
+              <span><strong>Marital Status:</strong>      &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.marital}}          </span><br><br>
+              <span><strong>State of Origin:</strong>      &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.state_of_origin}}          </span><br><br>
+              <span><strong>L.G.A:</strong>      &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.lga}}          </span><br><br>
+              <span><strong>Way of Reminder:</strong>      &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.question}}          </span><br><br>
+              <span><strong>Date Registered:</strong>      &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.date}}          </span><br><br>
+              <span><strong>Due Date:</strong>      &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.due_date}}          </span><br><br>
+              <span><strong>Donate Times:</strong>      &nbsp;&nbsp;&nbsp;&nbsp;   {{donor.count}}          </span><br><br>
+              <button id="btn" onclick="clk()" class="btn btn-primary"><i class="fa fa-print"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script>
+    function clk(){
+        document.getElementById('btn').style.display = 'none';
+        print()
+        document.getElementById('btn').style.display = 'block';
+    }
+  </script>
+  <script src="../static/assets2/vendors/js/vendor.bundle.base.js"></script>
+  <script src="../static/assets2/vendors/js/vendor.bundle.addons.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="../static/assets2/js/off-canvas.js"></script>
+  <script src="../static/assets2/js/hoverable-collapse.js"></script>
+  <script src="../static/assets2/js/misc.js"></script>
+  <script src="../static/assets2/js/settings.js"></script>
+  <script src="../static/assets2/js/todolist.js"></script>
+  <!-- endinject -->
+</body>
+
+
+<!-- Mirrored from www.urbanui.com/melody/template/pages/samples/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 15 Sep 2018 06:08:53 GMT -->
+</html>

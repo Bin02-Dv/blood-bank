@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/assest/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assest/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="shortcut icon" href="../static/img/logo.jpg" />
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-content">
+            <form action="" method="post">
+                {% csrf_token %}
+
+                <div class="controls">
+                    <div class="img">
+                        <img src="../static/img/logo.jpg" alt="">
+                    </div>
+                    <h2>Login</h2>
+                    {% for message in messages %}
+                    {% if message %}
+                    <div class="alert alert-danger text-center">
+                        {{message}}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="r">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" name="username" id="" placeholder="Username">
+                    </div>
+                    <div class="r">
+                        <i class="fa fa-lock"></i>
+                        <input type="password" name="password" id="" placeholder="Password">
+                    </div>
+                    <div class="btn">
+                        <button class="btn btn-danger">Login</button>
+                    </div>
+                </div>
+                <div class="empty"></div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

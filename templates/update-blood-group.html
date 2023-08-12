@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboad - Update Blood Group</title>
+    <link rel="stylesheet" href="../static/assest/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/assest/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="shortcut icon" href="../static/img/logo.jpg" />
+</head>
+<body>
+    <main>
+        <header>
+            <div class="header-content">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user-plus"></i> Donor
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#form"><i class="fa fa-plus-circle"></i> Add New</button></li>
+                        <li><a href="/all-donor" class="dropdown-item" type="button"><i class="fa fa-list"></i> All Donor Details</a></li>
+                        <li><a href="/" class="dropdown-item" type="button"><i class="fa fa-arrow-left"></i> Return</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-search"></i> Search Blood Donor
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="/search-address" class="dropdown-item" type="button"><i class="fa fa-location text-danger"></i> Location</a></li>
+                        <li><a href="/search-blood" class="dropdown-item" type="button"><i class="fa fa-fire text-danger"></i> Blood Group</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-chart-line"></i> Stock
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="/stock-increase" class="dropdown-item" type="button"><i class="fa fa-arrow-up text-success"></i> Increase</a></li>
+                        <li><a href="/stock-decrease" class="dropdown-item" type="button"><i class="fa fa-arrow-down text-danger"></i> Decrease</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-chart-line text-success"></i> Stock Rates
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="/search-blood-rate-month" class="dropdown-item" type="button"><i class="fa fa-chart-line text-success"></i> Monthly Rate</a></li>
+                        <li><a href="/search-blood-rate-year" class="dropdown-item" type="button"><i class="fa fa-chart-line text-success"></i> Yearly Rate</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-user-circle"></i> Users
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="/user-add" class="dropdown-item" type="button"><i class="fa fa-user-plus text-success"></i> Add User</a></li>
+                        <li><a href="/user-view" class="dropdown-item" type="button"><i class="fa fa-users text-success"></i> View Users</a></li>
+                    </ul>
+                </div>
+                <div class="btn-group">
+                    <a href="/birthday" class="btn btn-success">
+                        <i class="fa fa-gift"></i> Need Wishes
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a href="/regular-donor" class="btn btn-info">
+                        Regular Donor
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a href="/due-date" class="btn btn-light">
+                        <i class="fa fa-clock"></i> Dues
+                    </a>
+                </div>
+                <div class="btn-group">
+                    <a href="/logout" class="btn btn-danger">
+                        <i class="fa fa-power-off"></i> Logout
+                    </a>
+                </div>
+            </div>
+        </header>
+        <h3><i id="text"></i></h3>
+        <section class="body-section">
+            <div class="modal-body">
+                <h2 class="text-light">Update Blood Group</h2>
+                <form action="/update-blood-group/{{blood.id}}" method="post">
+                    {% csrf_token %}
+                    <div class="form-input">
+                        <div class="input-row">
+                            <label for="bloodGroup">Blood Group</label>
+                            <input type="text" name="blood-group" id="" value="{{blood.blood_group}}">
+                        </div>
+                        <div class="btn">
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-save"></i>  Save</button>
+                            <a href="/stock-increase" type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"><i class="fa fa-close"></i>  Cancel</a>
+                        </div>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+  <script src="../static/assest/vendor/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/assest/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+  <script>
+    setInterval(function() {
+      function rand(){
+        var words = [
+            'GIVE BLOOD', 
+            'GIVE PLASMA',
+            'SHARE LIFE',
+            'SHARE OFTEN',
+        ]
+        var ran = Math.floor(Math.random()* words.length)
+        document.getElementById('text').innerHTML = words[ran];
+      }
+      rand()
+    }, 2000);
+  </script>
+</body>
+</html>
